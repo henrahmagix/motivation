@@ -51,12 +51,19 @@ App.fn.renderAgeLoop = function(){
   this.interval = setInterval(this.renderAge.bind(this), 100);
 };
 
+function getYears (duration) {
+  return duration / 31556900000
+}
+
+var PERRY_DOB = new Date('1993-06-17');
+
 App.fn.renderAge = function(){
   var now       = new Date
-  var duration  = now - this.dob;
-  var years     = duration / 31556900000;
+  var years     = getYears(now - this.dob);
+  var yearsFromPerry = getYears(now - PERRY_DOB);
+  var unitsOfPerry = years / yearsFromPerry;
 
-  var majorMinor = years.toFixed(9).toString().split('.');
+  var majorMinor = unitsOfPerry.toFixed(9).toString().split('.');
 
   requestAnimationFrame(function(){
     this.html(this.view('age')({
