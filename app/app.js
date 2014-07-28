@@ -55,7 +55,7 @@ function getYears (duration) {
   return duration / 31556900000
 }
 
-var PERRY_DOB = new Date('1993-06-17');
+var PERRY_DOB = new Date('1993-06-17T22:06');
 
 App.fn.renderAge = function(){
   var now       = new Date
